@@ -10,7 +10,7 @@ export default function Home() {
 			initial="initial"
 			animate="animate"
 			variants={fromLeftToRight}
-			className="max-w-[1350px] mx-auto min-h-[100vh] tracking-wide text-slate-100 pb-10"
+			className="max-w-[1350px] mx-auto min-h-[100vh] pb-10"
 		>
 			<Navbar />
 			<div className="flex gap-5 mt-9">

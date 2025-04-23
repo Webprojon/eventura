@@ -13,16 +13,22 @@ export default function Navbar() {
 					Events
 				</Link>
 			</div>
-			<nav className="font-semibold flex gap-x-4 text-sky-300">
+			<nav className="font-semibold flex items-center gap-x-4 text-sky-300">
 				<button className="py-[3px] px-3 rounded-sm cursor-pointer border border-sky-300 text-sky-300 bg-[#032236] hover:bg-[#032236c1]">
 					Create New Event
 				</button>
-				<button className="px-3 rounded-sm cursor-pointer border border-sky-300 bg-[#032236] hover:bg-[#032236c1]">
+				<Link
+					to="/log-in"
+					className="py-[3px] px-3 rounded-sm cursor-pointer border border-sky-300 bg-[#032236] hover:bg-[#032236c1]"
+				>
 					Sign In
-				</button>
-				<button className="px-3 rounded-sm cursor-pointer border border-sky-300 bg-[#032236] hover:bg-[#032236c1]">
+				</Link>
+				<Link
+					to="/register"
+					className="py-[3px] px-3 rounded-sm cursor-pointer border border-sky-300 bg-[#032236] hover:bg-[#032236c1]"
+				>
 					Register
-				</button>
+				</Link>
 				<Link to="/events">
 					<img
 						alt="user img"

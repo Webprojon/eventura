@@ -16,7 +16,8 @@ html::-webkit-scrollbar-thumb {
 
 .border,
 .border-b,
-.border-r {
+.border-r,
+.border-l {
 	@apply border-gray-800;
 }
 
@@ -30,4 +31,8 @@ html::-webkit-scrollbar-thumb {
 
 .border-r {
 	@apply border-r;
+}
+
+.border-l {
+	@apply border-l;
 }

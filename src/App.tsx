@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -13,6 +14,7 @@ function App() {
 				<Route path="/log-in" element={<Login />} />
 				<Route path="/register" element={<Register />} />
 			</Routes>
+			<Toaster position="bottom-right" />
 			<div className="fixed z-10 top-[-33rem] left-1/2 -translate-x-1/2 h-[30rem] w-[40rem] rounded-full blur-[10rem] bg-[#2a3f83]"></div>
 			<div className="fixed z-10 bottom-[-34rem] left-1/2 -translate-x-1/2 h-[30rem] w-[70rem] rounded-full blur-[10rem] bg-[#2a3f83]"></div>
 		</main>

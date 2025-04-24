@@ -9,3 +9,25 @@ html::-webkit-scrollbar-thumb {
 	background-color: #0c4164;
 	border-radius: 1px;
 }
+
+.btn {
+	@apply font-semibold rounded-md cursor-pointer border border-sky-300 text-sky-300 bg-[#032236] hover:bg-[#032236c1];
+}
+
+.border,
+.border-b,
+.border-r {
+	@apply border-gray-800;
+}
+
+.border {
+	@apply border;
+}
+
+.border-b {
+	@apply border-b;
+}
+
+.border-r {
+	@apply border-r;
+}

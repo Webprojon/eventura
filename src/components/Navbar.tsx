@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
 	return (
-		<header className="flex items-center justify-between h-[9vh] border-b border-gray-800">
+		<header className="flex items-center justify-between h-[9vh] border-b">
 			<div className="flex items-center gap-x-6 text-lg">
 				<Link to="/events" className="flex items-center leading-none gap-3">
 					<FaPeopleGroup className="size-7 text-sky-300" />
@@ -14,19 +14,11 @@ export default function Navbar() {
 				</Link>
 			</div>
 			<nav className="font-semibold flex items-center gap-x-4 text-sky-300">
-				<button className="py-[3px] px-3 rounded-sm cursor-pointer border border-sky-300 text-sky-300 bg-[#032236] hover:bg-[#032236c1]">
-					Create New Event
-				</button>
-				<Link
-					to="/log-in"
-					className="py-[3px] px-3 rounded-sm cursor-pointer border border-sky-300 bg-[#032236] hover:bg-[#032236c1]"
-				>
+				<button className="py-[3px] px-3 btn">Create New Event</button>
+				<Link to="/log-in" className="py-[3px] px-3 btn">
 					Sign In
 				</Link>
-				<Link
-					to="/register"
-					className="py-[3px] px-3 rounded-sm cursor-pointer border border-sky-300 bg-[#032236] hover:bg-[#032236c1]"
-				>
+				<Link to="/register" className="py-[3px] px-3 btn">
 					Register
 				</Link>
 				<Link to="/events">

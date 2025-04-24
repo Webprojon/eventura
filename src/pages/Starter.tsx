@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { fromTopToBottom } from "../lib/page-animations";
 
 export default function StarterPage() {
-	//const [isStarted, setIsStarted] = useState(false);
 	return (
 		<motion.section className="flex items-center justify-center h-[100vh]">
 			<motion.div
@@ -16,15 +15,10 @@ export default function StarterPage() {
 			>
 				<div className="flex items-center gap-3">
 					<FaPeopleGroup className="size-12 text-sky-300" />
-					<h1 className="leading-none font-semibold text-[32px] md:text-[46px] text-center">Eventura</h1>
+					<h1 className="leading-none font-semibold text-[46px]">Eventura</h1>
 				</div>
-				<p className="text-sm md:text-lg text-center text-slate-300">
-					Your gateway to discovering and joining amazing events around you.
-				</p>
-				<Link
-					to="/events"
-					className="flex items-center gap-x-2 group font-bold mt-6 py-[10px] px-[46px] rounded-md border border-sky-300 text-sky-300 bg-[#032236] hover:bg-[#032236c1]"
-				>
+				<p className="text-lg text-slate-300">Your gateway to discovering and joining amazing events around you.</p>
+				<Link to="/events" className="flex items-center gap-x-2 group mt-6 py-[10px] px-[46px] btn">
 					START
 					<MdArrowForward className="size-5 transform transition-transform duration-200 group-hover:translate-x-1" />
 				</Link>

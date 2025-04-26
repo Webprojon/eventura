@@ -1,4 +1,4 @@
-### This project is being developed in my spare time, so progress is currently slow.
+### This open-source public project is being developed in my spare time, but the progress is a bit slow at the moment.
 
 # Eventura
 

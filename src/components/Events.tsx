@@ -1,54 +1,7 @@
 import { MdOutlineDateRange } from "react-icons/md";
 import { TfiLocationPin } from "react-icons/tfi";
 import { Link } from "react-router-dom";
-
-const EVENT_DETAILS = [
-	{
-		id: 1,
-		organiser: "Adrian",
-		date: "July 7, 2025, 12:00 AM",
-		eventTitle: "250 Km Running Marathon",
-		location: "Warsaw Tawer Campus, Jana Pavla Street, Poland",
-		participantImgs: [
-			"https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
-			"https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
-			"https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
-		],
-		organiserImg:
-			"https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
-		description:
-			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores dolore iure itaque fuga nostrum molestias deserunt, asperiores hic eius aliquam!",
-	},
-	{
-		id: 2,
-		organiser: "Richard",
-		date: "July 7, 2025, 12:00 AM",
-		eventTitle: "250 Km Running Marathon",
-		location: "Warsaw Tawer Campus, Jana Pavla Street, Poland",
-		participantImgs: [
-			"https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
-			"https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
-		],
-		organiserImg:
-			"https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
-		description:
-			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores dolore iure itaque fuga nostrum molestias deserunt, asperiores hic eius aliquam!",
-	},
-	{
-		id: 3,
-		organiser: "Tome Simth",
-		date: "July 7, 2025, 12:00 AM",
-		eventTitle: "250 Km Running Marathon",
-		location: "Warsaw Tawer Campus, Jana Pavla Street, Poland",
-		participantImgs: [
-			"https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
-		],
-		organiserImg:
-			"https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D",
-		description:
-			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores dolore iure itaque fuga nostrum molestias deserunt, asperiores hic eius aliquam!",
-	},
-];
+import { EVENT_DETAILS } from "../lib/data";
 
 export default function Events() {
 	return (
@@ -84,7 +37,7 @@ export default function Events() {
 							))}
 						</div>
 						<p>{detail.description}</p>
-						<Link to="/events" className="flex justify-end mt-2 font-medium text-sky-300">
+						<Link to={`/events/${detail.id}`} className="flex justify-end mt-2 font-medium text-sky-300">
 							Learn More
 						</Link>
 					</div>

@@ -1,22 +1,27 @@
 import { Toaster } from "react-hot-toast";
-import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import StarterPage from "./pages/Starter";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import EventsPage from "./pages/EventsPage";
+import EventDetails from "./pages/EventDetails";
 
 function App() {
+	const pathname = useLocation().pathname;
 	return (
-		<main className="bg-[#030712] tracking-wide text-slate-100">
+		<main className="bg-[#030712] min-h-[100vh] tracking-wide text-slate-100">
+			{!(pathname === "/" || pathname === "/log-in" || pathname === "/register") && <Navbar />}
 			<Routes>
 				<Route path="/" element={<StarterPage />} />
-				<Route path="/events" element={<Home />} />
+				<Route path="/events" element={<EventsPage />} />
+				<Route path="/events/:id" element={<EventDetails />} />
 				<Route path="/log-in" element={<Login />} />
 				<Route path="/register" element={<Register />} />
 			</Routes>
 			<Toaster position="bottom-right" />
-			<div className="fixed z-10 top-[-33rem] left-1/2 -translate-x-1/2 h-[30rem] w-[40rem] rounded-full blur-[10rem] bg-[#2a3f83]"></div>
-			<div className="fixed z-10 bottom-[-34rem] left-1/2 -translate-x-1/2 h-[30rem] w-[70rem] rounded-full blur-[10rem] bg-[#2a3f83]"></div>
+			<div className="bg-blur-effect top-[-33rem]"></div>
+			<div className="bg-blur-effect bottom-[-34rem]"></div>
 		</main>
 	);
 }

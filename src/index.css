@@ -14,6 +14,16 @@ html::-webkit-scrollbar-thumb {
 	border-radius: 1px;
 }
 
+.small-scroll::-webkit-scrollbar {
+	width: 1px;
+	background-color: #030712;
+}
+
+.small-scroll::-webkit-scrollbar-thumb {
+	background-color: #0c4164;
+	border-radius: 1px;
+}
+
 .btn {
 	@apply font-semibold rounded-md cursor-pointer border border-sky-300 text-sky-300 bg-[#032236] hover:bg-[#032236c1];
 }

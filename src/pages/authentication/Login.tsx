@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Input from "../components/Input/Input";
-import AuthLayout from "../components/Input/AuthLayout";
+import AuthLayout from "../../components/input-components/AuthLayout";
+import Input from "../../components/input-components/Input";
 
 export default function Login() {
 	return (

@@ -1,7 +1,9 @@
 import { FaPeopleGroup } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
+	const pathname = useLocation().pathname;
+
 	return (
 		<header className="max-w-[1350px] mx-auto flex items-center justify-between h-[9vh] border-b">
 			<div className="flex items-center gap-x-6 text-lg">
@@ -14,7 +16,9 @@ export default function Navbar() {
 				</Link>
 			</div>
 			<nav className="font-semibold flex items-center gap-x-4 text-sky-300">
-				<button className="py-[4px] px-3 btn">Create New Event</button>
+				<Link to="/create-event" className={`py-[4px] px-3 btn ${pathname === "/create-event" ? "hidden" : ""}`}>
+					Create New Event
+				</Link>
 				<Link to="/log-in" className="py-[4px] px-3 btn">
 					Sign In
 				</Link>

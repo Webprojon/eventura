@@ -1,5 +1,7 @@
 import { FaPeopleGroup } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { smoothOpacity } from "../../lib/page-animations";
+import { motion } from "framer-motion";
 
 type AuthLayoutProps = {
 	subtitle: string;
@@ -8,7 +10,12 @@ type AuthLayoutProps = {
 
 export default function AuthLayout({ subtitle, children }: AuthLayoutProps) {
 	return (
-		<section className="max-w-[1350px] mx-auto min-h-[100vh] flex justify-center items-center">
+		<motion.section
+			initial="initial"
+			animate="animate"
+			variants={smoothOpacity}
+			className="max-w-[1350px] mx-auto min-h-[100vh] flex justify-center items-center"
+		>
 			<div className="flex items-center gap-x-10">
 				<div className="flex flex-col items-center justify-center gap-y-4 flex-1">
 					<Link to="/" className="flex items-center gap-3">
@@ -20,6 +27,6 @@ export default function AuthLayout({ subtitle, children }: AuthLayoutProps) {
 				<div className="h-[70vh] border-r"></div>
 				<form className="w-[350px] flex gap-y-7 flex-col flex-2">{children}</form>
 			</div>
-		</section>
+		</motion.section>
 	);
 }

@@ -6,6 +6,7 @@ import { EVENT_DETAILS, MAP_SRC } from "../../lib/data";
 import { SlInfo } from "react-icons/sl";
 import { useState } from "react";
 import EventParticipants from "../../components/event-components/EventParticipants";
+import { smoothOpacity } from "../../lib/page-animations";
 
 export default function EventDetails() {
 	const [isOpenMap, setIsOpenMap] = useState(false);
@@ -24,9 +25,9 @@ export default function EventDetails() {
 
 	return (
 		<motion.section
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			transition={{ duration: 0.5 }}
+			initial="initial"
+			animate="animate"
+			variants={smoothOpacity}
 			className="flex items-start gap-5 mt-9 max-w-[1350px] min-h-[100vh] mx-auto pb-10"
 		>
 			<div className="flex-3 rounded-md p-5 border bg-[#10141E]">

@@ -22,7 +22,7 @@ export default function Navbar() {
 				<Link to="/log-in" className="py-[4px] px-3 btn">
 					Sign In
 				</Link>
-				<Link to="/events">
+				<Link to="/profile/john">
 					<img
 						alt="user img"
 						className="w-8 h-8 rounded-full object-cover"

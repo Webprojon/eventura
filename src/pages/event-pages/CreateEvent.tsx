@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import Input from "../../components/input-components/Input";
 import { Link } from "react-router-dom";
+import { smoothOpacity } from "../../lib/page-animations";
 
 export default function CreateEvent() {
 	return (
 		<motion.section
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			transition={{ duration: 0.5 }}
+			initial="initial"
+			animate="animate"
+			variants={smoothOpacity}
 			className="max-w-[1350px] mx-auto min-h-[75vh] rounded-md p-4 mt-9 bg-[#10141E]"
 		>
 			<form>

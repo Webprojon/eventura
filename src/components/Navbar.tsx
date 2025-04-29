@@ -15,11 +15,11 @@ export default function Navbar() {
 					Events
 				</Link>
 			</div>
-			<nav className="font-semibold flex items-center gap-x-4 text-sky-300">
-				<Link to="/create-event" className={`py-[4px] px-3 btn ${pathname === "/create-event" ? "hidden" : ""}`}>
+			<nav className="font-semibold flex items-center gap-x-6 text-sky-300">
+				<Link to="/create-event" className={`py-[4px] px-5 btn ${pathname === "/create-event" ? "hidden" : ""}`}>
 					Create New Event
 				</Link>
-				<Link to="/log-in" className="py-[4px] px-3 btn">
+				<Link to="/log-in" className="py-[4px] px-5 btn">
 					Sign In
 				</Link>
 				<Link to="/profile/john">

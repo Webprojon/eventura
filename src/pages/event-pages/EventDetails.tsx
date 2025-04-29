@@ -81,13 +81,7 @@ export default function EventDetails() {
 				</div>
 			</div>
 
-			<div className="flex-1 rounded-md border select-none bg-[#10141E]">
-				<div className="border-b p-3">
-					<span className="font-semibold text-[18px]">Participants</span>
-				</div>
-
-				<EventParticipants participants={event.participants} />
-			</div>
+			<EventParticipants participants={event.participants} />
 		</motion.section>
 	);
 }

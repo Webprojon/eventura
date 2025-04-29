@@ -24,9 +24,13 @@ html::-webkit-scrollbar-thumb {
 	border-radius: 1px;
 }
 
+/* BUTTON */
+
 .btn {
 	@apply font-semibold rounded-md cursor-pointer border border-sky-300 text-sky-300 bg-[#032236] hover:bg-[#032236c1];
 }
+
+/* BORDERS */
 
 .border,
 .border-b,
@@ -53,4 +57,21 @@ html::-webkit-scrollbar-thumb {
 
 .bg-blur-effect {
 	@apply fixed z-10 left-1/2 -translate-x-1/2 h-[30rem] w-[40rem] rounded-full blur-[10rem] bg-[#2a3f83];
+}
+
+/* CALENDAR */
+
+.p-datepicker {
+	background-color: #10141e;
+	border: none;
+}
+
+/*.p-datepicker table {
+	background-color: #10141e;
+}*/
+
+.p-datepicker-header {
+	background-color: #1c2029;
+	border-bottom: none;
+	border-radius: 4px;
 }

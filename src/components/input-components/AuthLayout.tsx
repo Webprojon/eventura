@@ -24,8 +24,10 @@ export default function AuthLayout({ subtitle, children }: AuthLayoutProps) {
 					</Link>
 					<p className="text-xl tracking-wider text-slate-300">{subtitle}</p>
 				</div>
+
 				<div className="h-[70vh] border-r"></div>
-				<form className="w-[350px] flex gap-y-7 flex-col flex-2">{children}</form>
+
+				<div>{children}</div>
 			</div>
 		</motion.section>
 	);

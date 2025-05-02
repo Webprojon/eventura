@@ -1,22 +1,51 @@
 import { motion } from "framer-motion";
 import Input from "../../components/input-components/Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { smoothOpacity } from "../../lib/page-animations";
 import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createEvent } from "../../lib/api/createEvents";
+import toast from "react-hot-toast";
 
 export default function CreateEvent() {
-	const [eventTitle, setEventTitle] = useState("");
-	const [eventCategory, setEventCategory] = useState("");
-	const [eventTime, setEventTime] = useState("");
-	const [eventCity, setEventCity] = useState("");
-	const [eventAvenue, setEventAvenue] = useState("");
-	const [eventDate, setEventDate] = useState("");
-	const [eventDescription, setEventDescription] = useState("");
+	const queryClient = useQueryClient();
+	const navigate = useNavigate();
+	const [formData, setFormData] = useState({
+		eventTitle: "",
+		eventCategory: "",
+		eventCity: "",
+		eventAvenue: "",
+		eventDate: "",
+		eventTime: "",
+		eventDescription: "",
+	});
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const { mutate, isPending, error, data } = useMutation({
+		mutationFn: createEvent,
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["events"] });
+			toast.success("New post is added!");
+		},
+		onError: (error) => {
+			toast.error("Something went wrong. Please try again." + error);
+		},
+	});
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+		const { name, value } = e.target;
+		setFormData((prev) => ({ ...prev, [name]: value }));
+	};
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-
-		console.log(eventTitle, eventCategory, eventTime, eventCity, eventAvenue, eventDate, eventDescription);
+		// Date validation
+		if (new Date(formData.eventDate) < new Date()) {
+			toast.error("Event date cannot be in the past.");
+			return;
+		}
+		mutate(formData);
+		if (data.success) toast.success("New post is added!");
+		navigate("/events");
 	};
 
 	return (
@@ -32,17 +61,19 @@ export default function CreateEvent() {
 					<div className="flex flex-wrap justify-between gap-6 mt-4">
 						<Input
 							type="text"
-							name="event-title"
+							name="eventTitle"
 							id="event-title"
 							text="Event Title"
 							className="flex-[2]"
-							state={eventTitle}
-							setState={setEventTitle}
+							value={formData.eventTitle}
+							onChange={handleChange}
 						/>
 						<select
 							required
-							value={eventCategory}
-							onChange={(e) => setEventCategory(e.target.value)}
+							id="event-category"
+							name="eventCategory"
+							value={formData.eventCategory}
+							onChange={handleChange}
 							className="flex-[2] border outline-none cursor-pointer rounded-md py-2 px-3 text-slate-300 bg-[#10141E]"
 						>
 							<option value="" disabled>
@@ -60,21 +91,21 @@ export default function CreateEvent() {
 					<div className="flex flex-wrap gap-6 mt-4">
 						<Input
 							type="text"
-							name="city"
+							name="eventCity"
 							id="city"
 							text="City"
 							className="flex-[2]"
-							state={eventCity}
-							setState={setEventCity}
+							value={formData.eventCity}
+							onChange={handleChange}
 						/>
 						<Input
 							type="text"
-							name="avenue"
+							name="eventAvenue"
 							id="avenue"
 							text="Avenue"
 							className="flex-[2]"
-							state={eventAvenue}
-							setState={setEventAvenue}
+							value={formData.eventAvenue}
+							onChange={handleChange}
 						/>
 					</div>
 				</div>
@@ -82,14 +113,21 @@ export default function CreateEvent() {
 				<div className="mt-10">
 					<h2 className="uppercase text-sm leading-none font-semibold text-sky-300">Event Date & Time</h2>
 					<div className="flex flex-wrap gap-6 mt-4">
-						<Input type="date" name="date" id="date" text="Date" state={eventDate} setState={setEventDate} />
+						<Input
+							type="date"
+							name="eventDate"
+							id="date"
+							text="Date"
+							value={formData.eventDate}
+							onChange={handleChange}
+						/>
 						<Input
 							type="time"
-							name="event-title"
-							id="event-title"
+							name="eventTime"
+							id="event-time"
 							text="Event Title"
-							state={eventTime}
-							setState={setEventTime}
+							value={formData.eventTime}
+							onChange={handleChange}
 						/>
 					</div>
 				</div>
@@ -102,10 +140,10 @@ export default function CreateEvent() {
 						required
 						id="description"
 						autoComplete="off"
-						name="description"
-						value={eventDescription}
+						name="eventDescription"
+						onChange={handleChange}
+						value={formData.eventDescription}
 						placeholder="Write a brief description..."
-						onChange={(e) => setEventDescription(e.target.value)}
 						className="w-full mt-3 mb-5 bg-transparent py-2 px-3 min-h-[14vh] small-scroll rounded-md outline-none border text-slate-300 placeholder:text-slate-300"
 					></textarea>
 				</div>
@@ -114,8 +152,8 @@ export default function CreateEvent() {
 					<Link to="/events" className="py-2 px-7 rounded-md font-semibold border-1 border-sky-300 text-sky-300">
 						Cancel
 					</Link>
-					<button type="submit" className="py-2 px-7 btn">
-						Create New Event
+					<button type="submit" className="py-2 px-7 btn" disabled={isPending}>
+						{isPending ? "Creating..." : "Create New Event"}
 					</button>
 				</div>
 			</form>

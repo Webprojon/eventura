@@ -2,22 +2,29 @@ import { MdOutlineDateRange } from "react-icons/md";
 import { TfiLocationPin } from "react-icons/tfi";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { EVENT_DETAILS, MAP_SRC } from "../../lib/data";
+import { MAP_SRC } from "../../lib/data";
 import { SlInfo } from "react-icons/sl";
 import { useState } from "react";
 import EventParticipants from "../../components/event-components/EventParticipants";
 import { smoothOpacity } from "../../lib/page-animations";
+import { EventTypes } from "../../lib/types";
+import { getEvents } from "../../lib/api/getEvents";
+import { useQuery } from "@tanstack/react-query";
+
+const DEFAULT_BG_IMG = "https://img.freepik.com/free-photo/people-taking-part-high-protocol-event_23-2150951243.jpg";
 
 export default function EventDetails() {
 	const [isOpenMap, setIsOpenMap] = useState(false);
 	const [userIsLoggedIn] = useState(false);
 	const { id } = useParams<{ id: string }>();
 
-	if (!id) {
-		return <div>Event Id is missing !</div>;
-	}
+	const { data, isLoading, error } = useQuery<{ data: EventTypes[] }>({
+		queryKey: ["events"],
+		queryFn: getEvents,
+		staleTime: 1000 * 60 * 5,
+	});
 
-	const event = EVENT_DETAILS.find((detail) => detail.id === Number(id));
+	const event = data?.data.find((detail) => detail._id === id);
 
 	if (!event) {
 		return <div>This event is not found !</div>;
@@ -32,14 +39,14 @@ export default function EventDetails() {
 		>
 			<div className="flex-3 rounded-md p-5 border bg-[#10141E]">
 				<div className="relative overflow-hidden border rounded-md">
-					<img src={event.bgImg} alt="background img" className="w-full h-[44vh] object-cover" />
+					<img src={DEFAULT_BG_IMG} alt="background img" className="w-full h-[44vh] object-cover" />
 					<div className="flex flex-col absolute bottom-0 p-4 w-full h-[44vh] bg-black/75">
 						<span className="font-medium text-[24px]">{event.eventTitle}</span>
-						<span className="flex gap-x-2 text-[18px] items-center">{event.date}</span>
+						<span className="flex gap-x-2 text-[18px] items-center">{event.eventDate}</span>
 						<span>
 							Organised by{" "}
 							<Link to="/events" className="font-semibold text-sky-300">
-								{event.organiser}
+								{event.eventOrganiser}
 							</Link>
 						</span>
 					</div>
@@ -50,17 +57,17 @@ export default function EventDetails() {
 						<span>
 							<SlInfo className="size-5" />
 						</span>
-						{event.description}
+						{event.eventDescription}
 					</div>
 
 					<div className="flex items-center gap-x-4 border-b pb-2 w-full">
 						<MdOutlineDateRange className="size-5" />
-						{event.date}
+						{event.eventDate}
 					</div>
 
 					<div className="flex items-center gap-x-4 border-b pb-2 w-full">
 						<TfiLocationPin className="size-5" />
-						{event.location}
+						{event.eventLocation}
 					</div>
 
 					<div className="flex justify-between items-end w-full">
@@ -81,7 +88,7 @@ export default function EventDetails() {
 				</div>
 			</div>
 
-			<EventParticipants participants={event.participants} />
+			<EventParticipants participants={event.eventParticipants} />
 		</motion.section>
 	);
 }

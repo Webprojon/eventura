@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
-
-type EventParticipant = {
-	id: number;
-	participantImg: string;
-	participantName: string;
-};
+import { ParticipantType } from "../../lib/types";
 
 type EventParticipantsProps = {
-	participants: EventParticipant[];
+	participants: ParticipantType[];
 };
 
 export default function EventParticipants({ participants }: EventParticipantsProps) {

@@ -1,53 +1,11 @@
 import { motion } from "framer-motion";
 import Input from "../../components/input-components/Input";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { smoothOpacity } from "../../lib/page-animations";
-import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createEvent } from "../../lib/api/createEvents";
-import toast from "react-hot-toast";
+import { useCreateEvent } from "../../hooks/useCreateEvent";
 
 export default function CreateEvent() {
-	const queryClient = useQueryClient();
-	const navigate = useNavigate();
-	const [formData, setFormData] = useState({
-		eventTitle: "",
-		eventCategory: "",
-		eventCity: "",
-		eventAvenue: "",
-		eventDate: "",
-		eventTime: "",
-		eventDescription: "",
-	});
-
-	const { mutate, isPending, error, data } = useMutation({
-		mutationFn: createEvent,
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["events"] });
-			toast.success("New post is added!");
-		},
-		onError: (error) => {
-			toast.error("Something went wrong. Please try again." + error);
-		},
-	});
-
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-		const { name, value } = e.target;
-		setFormData((prev) => ({ ...prev, [name]: value }));
-	};
-
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		// Date validation
-		if (new Date(formData.eventDate) < new Date()) {
-			toast.error("Event date cannot be in the past.");
-			return;
-		}
-		mutate(formData);
-		if (data.success) toast.success("New post is added!");
-		navigate("/events");
-	};
-
+	const { formData, handleChange, handleSubmit, isPending } = useCreateEvent();
 	return (
 		<motion.section
 			initial="initial"

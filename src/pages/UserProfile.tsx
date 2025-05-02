@@ -1,14 +1,12 @@
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
-import { EVENT_DETAILS } from "../lib/data";
 import { smoothOpacity } from "../lib/page-animations";
 
 export default function UserPprofile() {
 	const { text } = useParams();
-	const user = EVENT_DETAILS.map((event) =>
-		event.participants.find((participant) => participant.participantName === text),
-	);
-	console.log(user);
+	//const user = EVENT_DETAILS.map((event) =>
+	//	event.participants.find((participant) => participant.participantName === text),
+	//);
 
 	return (
 		<motion.section

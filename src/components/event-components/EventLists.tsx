@@ -1,11 +1,10 @@
 import { MdOutlineDateRange } from "react-icons/md";
 import { TfiLocationPin } from "react-icons/tfi";
 import { Link } from "react-router-dom";
-import { EventTypes } from "../../lib/types";
-import { useQuery } from "@tanstack/react-query";
-import { getEvents } from "../../lib/api/getEvents";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { NO_AVATAR } from "../../lib/data";
+import { useGetEvents } from "../../hooks/useGetEvents";
 
 export function EventSkeleton() {
 	return (
@@ -36,29 +35,19 @@ export function EventSkeleton() {
 	);
 }
 
-const DEFAULT_IMG =
-	"https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D";
-
 export default function EventLists() {
-	const { data, isLoading, error } = useQuery<{ data: EventTypes[] }>({
-		queryKey: ["events"],
-		queryFn: getEvents,
-		staleTime: 1000 * 60 * 5,
-	});
-
-	//if (isLoading) return <p>Loading...</p>;
-	//if (error) return <p>Error: {error.message}</p>;
+	const { data, isLoading } = useGetEvents();
 
 	return (
 		<section className="flex flex-col gap-y-5 flex-[2] z-40">
 			{isLoading && <EventSkeleton />}
 			{data?.data.map((detail) => (
-				<div key={detail._id} className="rounded-md p-5 border bg-[#10141E]">
+				<div key={detail._id} className="rounded-md p-3 border bg-[#10141E]">
 					<div className="flex gap-6 border-b pb-2">
 						<img
 							alt="User img"
-							className="w-[60px] h-[60px] rounded-full object-cover"
-							src={detail.organiserImg || DEFAULT_IMG}
+							className="w-[60px] h-[60px] rounded-full object-cover border"
+							src={detail.organiserImg || NO_AVATAR}
 						/>
 						<div className="flex flex-col">
 							<span className="font-medium text-[20px]">{detail.eventTitle}</span>
@@ -70,7 +59,7 @@ export default function EventLists() {
 							</span>
 						</div>
 					</div>
-					<div className="flex justify-between items-center py-5">
+					<div className="flex justify-between items-center py-6">
 						<span className="flex gap-x-2 items-center">
 							<MdOutlineDateRange className="size-5" />
 							{detail.eventDate} {detail.eventTime}

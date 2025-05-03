@@ -1,46 +1,17 @@
 import { MdOutlineDateRange } from "react-icons/md";
 import { TfiLocationPin } from "react-icons/tfi";
 import { Link } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { NO_AVATAR } from "../../lib/data";
 import { useGetEvents } from "../../hooks/useGetEvents";
-
-export function EventSkeleton() {
-	return (
-		<div className="rounded-md p-5 border bg-[#10141E]">
-			<div className="flex gap-6 border-b pb-2">
-				<Skeleton circle width={60} height={60} baseColor="#1C2029" highlightColor="#2A2F3A" />
-				<div className="flex flex-col w-full gap-2">
-					<Skeleton width="60%" height={20} baseColor="#1C2029" highlightColor="#2A2F3A" />
-					<Skeleton width="40%" height={15} baseColor="#1C2029" highlightColor="#2A2F3A" />
-				</div>
-			</div>
-
-			<div className="flex justify-between items-center py-5">
-				<Skeleton width="30%" height={15} baseColor="#1C2029" highlightColor="#2A2F3A" />
-				<Skeleton width="30%" height={15} baseColor="#1C2029" highlightColor="#2A2F3A" />
-			</div>
-
-			<div className="p-3 rounded-sm border bg-[#1C2029]">
-				{/*<div className="flex items-center gap-x-2 p-2 mb-4 border-b">
-					{[...Array(3)].map((_, i) => (
-						<Skeleton key={i} circle width={36} height={36} baseColor="#1C2029" highlightColor="#2A2F3A" />
-					))}
-				</div>*/}
-				<Skeleton count={2} height={10} className="mb-2" baseColor="#1C2029" highlightColor="#2A2F3A" />
-				<Skeleton width="25%" height={15} baseColor="#1C2029" highlightColor="#2A2F3A" />
-			</div>
-		</div>
-	);
-}
+import { EventListsSkeleton } from "../skeletons/EventListsSkeleton";
 
 export default function EventLists() {
-	const { data, isLoading, formattedDate } = useGetEvents();
+	const { data, isLoading, formatDate } = useGetEvents();
 
 	return (
-		<section className="flex flex-col gap-y-5 flex-[2] z-40">
-			{isLoading && <EventSkeleton />}
+		<section className="flex flex-col gap-y-5 flex-[2.5] z-40">
+			{isLoading && <EventListsSkeleton count={2} />}
 			{data?.data.map((detail) => (
 				<div key={detail._id} className="rounded-md p-3 border bg-[#10141E]">
 					<div className="flex gap-6 border-b pb-2">
@@ -62,7 +33,7 @@ export default function EventLists() {
 					<div className="flex justify-between items-center py-6">
 						<span className="flex gap-x-2 items-center">
 							<MdOutlineDateRange className="size-5" />
-							{formattedDate}, at {detail.eventTime}
+							{formatDate(detail.eventDate)}, at {detail.eventTime}
 						</span>
 						<span className="flex gap-x-2 items-center">
 							<TfiLocationPin className="size-5" />

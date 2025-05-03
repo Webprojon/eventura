@@ -66,9 +66,9 @@ html::-webkit-scrollbar-thumb {
 	border: none;
 }
 
-/*.p-datepicker table {
-	background-color: #10141e;
-}*/
+.p-datepicker td {
+	padding: 0.1rem;
+}
 
 .p-datepicker-header {
 	background-color: #1c2029;

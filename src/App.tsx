@@ -1,7 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import StarterPage from "./pages/Starter";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/header/Navbar";
 import EventsPage from "./pages/event-pages/EventsPage";
 import EventDetails from "./pages/event-pages/EventDetails";
 import Login from "./pages/authentication/Login";

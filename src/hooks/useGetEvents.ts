@@ -8,6 +8,7 @@ export function useGetEvents() {
 	const getEvents = async () => {
 		const res = await fetch("https://eventura-data.onrender.com/api/v1/events");
 		if (!res.ok) throw new Error("Error fetching users");
+		await new Promise((resolve) => setTimeout(resolve, 1000));
 		return res.json();
 	};
 
@@ -21,19 +22,19 @@ export function useGetEvents() {
 	const event = data?.data.find((detail) => detail._id === id);
 
 	// Formatting date
-	const formattedDate = data?.data.map((detail) => {
-		const date = new Date(detail.eventDate);
+	const formatDate = (dateString: string) => {
+		const date = new Date(dateString);
 		return date.toLocaleDateString("en-US", {
 			year: "numeric",
 			month: "long",
 			day: "numeric",
 		});
-	});
+	};
 
 	return {
 		data,
 		isLoading,
 		event,
-		formattedDate,
+		formatDate,
 	};
 }

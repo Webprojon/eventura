@@ -9,13 +9,14 @@ import { smoothOpacity } from "../../lib/page-animations";
 import { DEFAULT_BG_IMG } from "../../lib/data";
 import { useDeleteEvent } from "../../hooks/useDeleteEvent";
 import { useGetEvents } from "../../hooks/useGetEvents";
+import { EventDetailsSkeleton } from "../../components/skeletons/EventDetailsSkeleton";
 
 export default function EventDetails() {
 	const [userIsLoggedIn] = useState(false);
 	const { handleDelete } = useDeleteEvent();
-	const { event, isLoading, formattedDate } = useGetEvents();
+	const { event, isLoading, formatDate } = useGetEvents();
 
-	if (isLoading) return <p>Loading...</p>;
+	if (isLoading) return <EventDetailsSkeleton />;
 	if (!event) return;
 
 	return (
@@ -31,7 +32,7 @@ export default function EventDetails() {
 					<div className="flex flex-col gap-y-1 absolute bottom-0 p-4 w-full h-[44vh] bg-black/75">
 						<span className="font-medium text-[24px]">{event.eventTitle}</span>
 						<span className="flex gap-x-2 text-[18px] items-center">
-							{formattedDate}, at {event.eventTime}
+							{formatDate(event.eventDate)}, at {event.eventTime}
 						</span>
 						<span>
 							Organised by{" "}
@@ -52,7 +53,7 @@ export default function EventDetails() {
 
 					<div className="flex items-center gap-x-4 border-b pb-2 w-full">
 						<MdOutlineDateRange className="size-5" />
-						{formattedDate}, at {event.eventTime}
+						{formatDate(event.eventDate)}, at {event.eventTime}
 					</div>
 
 					<div className="flex items-center gap-x-4 border-b pb-2 w-full">
@@ -60,7 +61,7 @@ export default function EventDetails() {
 						{event.eventCity} {event.eventAvenue}
 					</div>
 
-					<div className="flex justify-between items-end w-full">
+					<div className="flex justify-between w-full">
 						<button className="btn py-[6px] px-4">
 							{userIsLoggedIn ? "Join This Event" : "Sign in to join this event"}
 						</button>

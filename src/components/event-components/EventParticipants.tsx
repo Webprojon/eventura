@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ParticipantType } from "../../lib/types";
 
 type EventParticipantsProps = {
@@ -8,10 +7,11 @@ type EventParticipantsProps = {
 export default function EventParticipants({ participants }: EventParticipantsProps) {
 	return (
 		<div className="flex-1 rounded-md border select-none bg-[#10141E]">
-			<div className="border-b px-3 py-2">
-				<span className="font-semibold text-[18px]">Participants</span>
+			{/*border-b*/}
+			<div className="px-3 py-2">
+				<span className="font-semibold text-[18px]">Participants {participants.length}</span>
 			</div>
-			<div className="flex flex-col gap-y-3 p-3 max-h-[35.4vh] overflow-y-scroll small-scroll">
+			{/*<div className="flex flex-col gap-y-3 p-3 max-h-[35.4vh] overflow-y-scroll small-scroll">
 				{participants.map((participant) => (
 					<Link
 						key={participant.id}
@@ -22,7 +22,7 @@ export default function EventParticipants({ participants }: EventParticipantsPro
 						<span className="font-medium">{participant.participantName}</span>
 					</Link>
 				))}
-			</div>
+			</div>*/}
 		</div>
 	);
 }

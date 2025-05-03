@@ -17,11 +17,23 @@ export function useGetEvents() {
 		staleTime: 1000 * 60 * 5,
 	});
 
+	// Single event for EventDetail page
 	const event = data?.data.find((detail) => detail._id === id);
+
+	// Formatting date
+	const formattedDate = data?.data.map((detail) => {
+		const date = new Date(detail.eventDate);
+		return date.toLocaleDateString("en-US", {
+			year: "numeric",
+			month: "long",
+			day: "numeric",
+		});
+	});
 
 	return {
 		data,
 		isLoading,
 		event,
+		formattedDate,
 	};
 }

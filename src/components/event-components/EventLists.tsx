@@ -36,7 +36,7 @@ export function EventSkeleton() {
 }
 
 export default function EventLists() {
-	const { data, isLoading } = useGetEvents();
+	const { data, isLoading, formattedDate } = useGetEvents();
 
 	return (
 		<section className="flex flex-col gap-y-5 flex-[2] z-40">
@@ -62,7 +62,7 @@ export default function EventLists() {
 					<div className="flex justify-between items-center py-6">
 						<span className="flex gap-x-2 items-center">
 							<MdOutlineDateRange className="size-5" />
-							{detail.eventDate} {detail.eventTime}
+							{formattedDate}, at {detail.eventTime}
 						</span>
 						<span className="flex gap-x-2 items-center">
 							<TfiLocationPin className="size-5" />

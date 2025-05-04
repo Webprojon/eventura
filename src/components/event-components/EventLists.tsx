@@ -5,6 +5,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { NO_AVATAR } from "../../lib/data";
 import { useGetEvents } from "../../hooks/useGetEvents";
 import { EventListsSkeleton } from "../skeletons/EventListsSkeleton";
+import ManageEvent from "../modals/ManageEventModal";
 
 export default function EventLists() {
 	const { data, isLoading, formatDate } = useGetEvents();
@@ -14,22 +15,26 @@ export default function EventLists() {
 			{isLoading && <EventListsSkeleton count={2} />}
 			{data?.data.map((detail) => (
 				<div key={detail._id} className="rounded-md p-3 border bg-[#10141E]">
-					<div className="flex gap-6 border-b pb-2">
-						<img
-							alt="User img"
-							className="w-[60px] h-[60px] rounded-full object-cover border"
-							src={detail.organiserImg || NO_AVATAR}
-						/>
-						<div className="flex flex-col">
-							<span className="font-medium text-[20px]">{detail.eventTitle}</span>
-							<span className="text-[14px]">
-								Organised by{" "}
-								<Link to="/events" className="font-semibold text-sky-300">
-									{detail.eventOrganiser || "Unknown"}
-								</Link>
-							</span>
+					<div className="flex justify-between items-start border-b">
+						<div className="flex gap-6 pb-2">
+							<img
+								alt="User img"
+								className="w-[60px] h-[60px] rounded-full object-cover border"
+								src={detail.organiserImg || NO_AVATAR}
+							/>
+							<div className="flex flex-col">
+								<span className="font-medium text-[20px]">{detail.eventTitle}</span>
+								<span className="text-[14px]">
+									Organised by{" "}
+									<Link to="/events" className="font-semibold text-sky-300">
+										{detail.eventOrganiser || "Unknown"}
+									</Link>
+								</span>
+							</div>
 						</div>
+						<ManageEvent id={detail._id} />
 					</div>
+
 					<div className="flex justify-between items-center py-6">
 						<span className="flex gap-x-2 items-center">
 							<MdOutlineDateRange className="size-5" />

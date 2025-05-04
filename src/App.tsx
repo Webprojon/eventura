@@ -1,14 +1,15 @@
 import { Toaster } from "react-hot-toast";
-import StarterPage from "./pages/Starter";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/header/Navbar";
 import EventsPage from "./pages/event-pages/EventsPage";
 import EventDetails from "./pages/event-pages/EventDetails";
 import Login from "./pages/authentication/Login";
 import Register from "./pages/authentication/Register";
-import UserProfile from "./pages/UserProfile";
 import CreateEvent from "./pages/event-pages/CreateEvent";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import StarterPage from "./pages/home-page/Starter";
+import UserPprofile from "./pages/user-page/UserProfile";
+import UpdateEvent from "./pages/event-pages/UpdateEvent";
 
 function App() {
 	const pathname = useLocation().pathname;
@@ -23,8 +24,9 @@ function App() {
 					<Route path="/register" element={<Register />} />
 					<Route path="/events" element={<EventsPage />} />
 					<Route path="/events/:id" element={<EventDetails />} />
-					<Route path="/create-event" element={<CreateEvent />} />
-					<Route path="/profile/:text" element={<UserProfile />} />
+					<Route path="//events/create-event" element={<CreateEvent />} />
+					<Route path="//events/update/:id" element={<UpdateEvent />} />
+					<Route path="/profile/:text" element={<UserPprofile />} />
 				</Routes>
 				<Toaster position="bottom-right" />
 				<div className="bg-blur-effect top-[-33rem]"></div>

@@ -1,5 +1,6 @@
 import { FaPeopleGroup } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
+import { NO_AVATAR } from "../../lib/data";
 
 export default function Navbar() {
 	const pathname = useLocation().pathname;
@@ -16,18 +17,17 @@ export default function Navbar() {
 				</Link>
 			</div>
 			<nav className="font-semibold flex items-center gap-x-6 text-sky-300">
-				<Link to="/create-event" className={`py-[4px] px-5 btn ${pathname === "/create-event" ? "hidden" : ""}`}>
+				<Link
+					to="/events/create-event"
+					className={`py-[4px] px-5 btn ${pathname === "/events/create" ? "hidden" : ""}`}
+				>
 					Create New Event
 				</Link>
 				<Link to="/log-in" className="py-[4px] px-5 btn">
 					Sign In
 				</Link>
 				<Link to="/profile/john">
-					<img
-						alt="user img"
-						className="w-8 h-8 rounded-full object-cover"
-						src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D"
-					/>
+					<img alt="user img" className="w-9 h-9 rounded-full border object-cover" src={NO_AVATAR} />
 				</Link>
 			</nav>
 		</header>

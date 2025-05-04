@@ -9,7 +9,7 @@ export function EventListsSkeleton({ count = 3 }) {
 			{Array(count)
 				.fill(0)
 				.map((_, i) => (
-					<div className="rounded-md p-5 border bg-[#10141E]">
+					<div key={i} className="rounded-md p-5 border bg-[#10141E]">
 						<div className="flex gap-6 border-b pb-2">
 							<Skeleton circle width={60} height={60} baseColor={basecolor} highlightColor={highlightcolor} />
 							<div className="flex flex-col w-full gap-2">

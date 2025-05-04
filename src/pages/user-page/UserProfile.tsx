@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
-import { smoothOpacity } from "../lib/page-animations";
+import { smoothOpacity } from "../../lib/page-animations";
 
 export default function UserPprofile() {
 	const { text } = useParams();

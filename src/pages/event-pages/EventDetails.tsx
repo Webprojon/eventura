@@ -7,13 +7,11 @@ import { useState } from "react";
 import EventParticipants from "../../components/event-components/EventParticipants";
 import { smoothOpacity } from "../../lib/page-animations";
 import { DEFAULT_BG_IMG } from "../../lib/data";
-import { useDeleteEvent } from "../../hooks/useDeleteEvent";
 import { useGetEvents } from "../../hooks/useGetEvents";
 import { EventDetailsSkeleton } from "../../components/skeletons/EventDetailsSkeleton";
 
 export default function EventDetails() {
 	const [userIsLoggedIn] = useState(false);
-	const { handleDelete } = useDeleteEvent();
 	const { event, isLoading, formatDate } = useGetEvents();
 
 	if (isLoading) return <EventDetailsSkeleton />;
@@ -51,27 +49,17 @@ export default function EventDetails() {
 						{event.eventDescription}
 					</div>
 
-					<div className="flex items-center gap-x-4 border-b pb-2 w-full">
+					<div className="flex items-center gap-x-4 border-b pb-3 w-full">
 						<MdOutlineDateRange className="size-5" />
 						{formatDate(event.eventDate)}, at {event.eventTime}
 					</div>
 
-					<div className="flex items-center gap-x-4 border-b pb-2 w-full">
+					<div className="flex items-center gap-x-4 border-b pb-3 w-full">
 						<TfiLocationPin className="size-5" />
 						{event.eventCity} {event.eventAvenue}
 					</div>
 
-					<div className="flex justify-between w-full">
-						<button className="btn py-[6px] px-4">
-							{userIsLoggedIn ? "Join This Event" : "Sign in to join this event"}
-						</button>
-						<button
-							onClick={() => handleDelete(event._id)}
-							className="font-semibold cursor-pointer rounded-md py-[6px] px-4 bg-red-500 hover:bg-[#f72c3ae6]"
-						>
-							Delete Event
-						</button>
-					</div>
+					<button className="btn py-2 px-4">{userIsLoggedIn ? "Join This Event" : "Sign in to join this event"}</button>
 				</div>
 			</div>
 

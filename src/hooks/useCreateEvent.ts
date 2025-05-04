@@ -2,16 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-
-interface EventFormData {
-	eventTitle: string;
-	eventCategory: string;
-	eventCity: string;
-	eventAvenue: string;
-	eventDate: string;
-	eventTime: string;
-	eventDescription: string;
-}
+import { EventFormData } from "../lib/types";
 
 export function useCreateEvent() {
 	const queryClient = useQueryClient();

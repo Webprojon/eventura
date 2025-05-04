@@ -16,3 +16,13 @@ export interface EventTypes {
 	eventParticipants: ParticipantType[];
 	eventDescription: string;
 }
+
+export interface EventFormData {
+	eventTitle: string;
+	eventCategory: string;
+	eventCity: string;
+	eventAvenue: string;
+	eventDate: string;
+	eventTime: string;
+	eventDescription: string;
+}

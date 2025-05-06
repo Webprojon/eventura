@@ -6,7 +6,7 @@ import { useCreateEvent } from "../../hooks/useCreateEvent";
 
 export default function CreateEvent() {
 	const { formData, handleChange, handleSubmit, isPending } = useCreateEvent();
-	
+
 	return (
 		<motion.section
 			initial="initial"

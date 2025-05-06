@@ -38,7 +38,7 @@ export interface AuthUserType {
 	password: string;
 }
 
-export type InputProps = {
+export interface InputProps {
 	id: string;
 	name: string;
 	type: string;
@@ -46,7 +46,7 @@ export type InputProps = {
 	className?: string;
 	value: string | number;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+}
 
 export interface ConfirmationModalProps {
 	message: string;

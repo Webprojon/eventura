@@ -2,22 +2,49 @@ import { Link } from "react-router-dom";
 import AuthLayout from "../../components/input-components/AuthLayout";
 import Input from "../../components/input-components/Input";
 import { useRegister } from "../../hooks/useRegister";
+import { useState } from "react";
+import { RegisterFormType } from "../../lib/validation/register.schema";
 
 export default function Register() {
-	const { userNameVal, userEmailVal, userPasswordVal, setUserNameVal, setUserEmailVal, setUserPasswordVal, errorMessage, handleSubmit, isPending } =
-		useRegister();
+	const [formData, setFormData] = useState<RegisterFormType>({ name: "", email: "", password: "" });
+	const [errors, setErrors] = useState<Partial<Record<keyof RegisterFormType, string>>>({});
+	const { handleSubmit, isPending } = useRegister();
 
 	return (
 		<AuthLayout subtitle="Create your new account.">
-			<form onSubmit={handleSubmit} className="w-[350px] flex gap-y-7 flex-col flex-2">
-				<Input type="text" name="username" id="username" text="Name" value={userNameVal} onChange={(e) => setUserNameVal(e.target.value)} />
+			<form onSubmit={(e) => handleSubmit(e, formData, setErrors)} className="w-[350px] flex gap-y-7 flex-col flex-2">
 				<div className="flex flex-col gap-y-2">
-					<Input type="email" name="email" id="email" text="Email" value={userEmailVal} onChange={(e) => setUserEmailVal(e.target.value)} />
-					{errorMessage && <span className="text-[12px] tracking-wider text-red-400">{errorMessage}</span>}
+					<Input
+						type="text"
+						name="username"
+						id="username"
+						text="Name"
+						value={formData.name}
+						onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+					/>
+					{errors.name && <span className="text-[12px] tracking-wider text-red-400">{errors.name}</span>}
 				</div>
 				<div className="flex flex-col gap-y-2">
-					<Input type="password" name="password" id="password" text="Password" value={userPasswordVal} onChange={(e) => setUserPasswordVal(e.target.value)} />
-					{errorMessage && <span className="text-[12px] tracking-wider text-red-400">{errorMessage}</span>}
+					<Input
+						type="email"
+						name="email"
+						id="email"
+						text="Email"
+						value={formData.email}
+						onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+					/>
+					{errors.email && <span className="text-[12px] tracking-wider text-red-400">{errors.email}</span>}
+				</div>
+				<div className="flex flex-col gap-y-2">
+					<Input
+						type="password"
+						name="password"
+						id="password"
+						text="Password"
+						value={formData.password}
+						onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+					/>
+					{errors.password && <span className="text-[12px] tracking-wider text-red-400">{errors.password}</span>}
 					<span className="text-slate-400 text-[14px]">
 						Have an account?{" "}
 						<Link to="/log-in" className="font-medium text-sky-300">

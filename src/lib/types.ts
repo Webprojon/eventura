@@ -26,3 +26,30 @@ export interface EventFormData {
 	eventTime: string;
 	eventDescription: string;
 }
+
+export interface AuthLayoutProps {
+	subtitle: string;
+	children: React.ReactNode;
+}
+
+export interface AuthUserType {
+	name?: string;
+	email: string;
+	password: string;
+}
+
+export type InputProps = {
+	id: string;
+	name: string;
+	type: string;
+	text: string;
+	className?: string;
+	value: string | number;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export interface ConfirmationModalProps {
+	message: string;
+	onCancel: () => void;
+	onConfirm: () => void;
+}

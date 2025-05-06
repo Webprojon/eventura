@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { EventFormData } from "../lib/types";
+import { BASE_URL } from "../lib/data";
 
 export function useCreateEvent() {
 	const queryClient = useQueryClient();
@@ -19,7 +20,7 @@ export function useCreateEvent() {
 	});
 
 	const createEvent = async (newEvent: EventFormData) => {
-		const res = await fetch("https://eventura-data.onrender.com/api/v1/events", {
+		const res = await fetch(`${BASE_URL}/events`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(newEvent),

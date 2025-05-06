@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { EventTypes } from "../lib/types";
 import { useParams } from "react-router-dom";
+import { BASE_URL } from "../lib/data";
 
 export function useGetEvents() {
 	const { id } = useParams<{ id: string }>();
 
 	const getEvents = async () => {
-		const res = await fetch("https://eventura-data.onrender.com/api/v1/events");
+		const res = await fetch(`${BASE_URL}/events`);
 		if (!res.ok) throw new Error("Error fetching users");
 		//await new Promise((resolve) => setTimeout(resolve, 1000));
 		return res.json();

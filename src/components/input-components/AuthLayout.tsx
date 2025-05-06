@@ -2,11 +2,7 @@ import { FaPeopleGroup } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { smoothOpacity } from "../../lib/page-animations";
 import { motion } from "framer-motion";
-
-type AuthLayoutProps = {
-	subtitle: string;
-	children: React.ReactNode;
-};
+import { AuthLayoutProps } from "../../lib/types";
 
 export default function AuthLayout({ subtitle, children }: AuthLayoutProps) {
 	return (

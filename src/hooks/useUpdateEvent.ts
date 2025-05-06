@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useGetEventById } from "./useGetEventById";
 import { EventFormData } from "../lib/types";
+import { BASE_URL } from "../lib/data";
 
 export function useUpdateEvent({ id }: { id: string }) {
 	const { data, isLoading } = useGetEventById(id);
@@ -35,7 +36,7 @@ export function useUpdateEvent({ id }: { id: string }) {
 	}, [data]);
 
 	const updateEvent = async (updatedEvent: EventFormData) => {
-		const res = await fetch(`https://eventura-data.onrender.com/api/v1/events/${id}`, {
+		const res = await fetch(`${BASE_URL}/events/${id}`, {
 			method: "PUT",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(updatedEvent),

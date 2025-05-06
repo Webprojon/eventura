@@ -1,12 +1,4 @@
-type InputProps = {
-	id: string;
-	name: string;
-	type: string;
-	text: string;
-	className?: string;
-	value: string | number;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+import { InputProps } from "../../lib/types";
 
 export default function Input({ type, name, id, text, className, value, onChange }: InputProps) {
 	return (

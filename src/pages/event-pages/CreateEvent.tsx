@@ -6,6 +6,7 @@ import { useCreateEvent } from "../../hooks/useCreateEvent";
 
 export default function CreateEvent() {
 	const { formData, handleChange, handleSubmit, isPending } = useCreateEvent();
+	
 	return (
 		<motion.section
 			initial="initial"
@@ -17,15 +18,7 @@ export default function CreateEvent() {
 				<div>
 					<h2 className="uppercase text-sm leading-none font-semibold text-sky-300">Event Details</h2>
 					<div className="flex flex-wrap justify-between gap-6 mt-4">
-						<Input
-							type="text"
-							name="eventTitle"
-							id="event-title"
-							text="Event Title"
-							className="flex-[2]"
-							value={formData.eventTitle}
-							onChange={handleChange}
-						/>
+						<Input type="text" name="eventTitle" id="event-title" text="Event Title" className="flex-[2]" value={formData.eventTitle} onChange={handleChange} />
 						<select
 							required
 							id="event-category"
@@ -47,46 +40,16 @@ export default function CreateEvent() {
 				<div className="mt-10">
 					<h2 className="uppercase text-sm leading-none font-semibold text-sky-300">Event Location Details</h2>
 					<div className="flex flex-wrap gap-6 mt-4">
-						<Input
-							type="text"
-							name="eventCity"
-							id="city"
-							text="City"
-							className="flex-[2]"
-							value={formData.eventCity}
-							onChange={handleChange}
-						/>
-						<Input
-							type="text"
-							name="eventAvenue"
-							id="avenue"
-							text="Avenue"
-							className="flex-[2]"
-							value={formData.eventAvenue}
-							onChange={handleChange}
-						/>
+						<Input type="text" name="eventCity" id="city" text="City" className="flex-[2]" value={formData.eventCity} onChange={handleChange} />
+						<Input type="text" name="eventAvenue" id="avenue" text="Avenue" className="flex-[2]" value={formData.eventAvenue} onChange={handleChange} />
 					</div>
 				</div>
 
 				<div className="mt-10">
 					<h2 className="uppercase text-sm leading-none font-semibold text-sky-300">Event Date & Time</h2>
 					<div className="flex flex-wrap gap-6 mt-4">
-						<Input
-							type="date"
-							name="eventDate"
-							id="date"
-							text="Date"
-							value={formData.eventDate}
-							onChange={handleChange}
-						/>
-						<Input
-							type="time"
-							name="eventTime"
-							id="event-time"
-							text="Event Title"
-							value={formData.eventTime}
-							onChange={handleChange}
-						/>
+						<Input type="date" name="eventDate" id="date" text="Date" value={formData.eventDate} onChange={handleChange} />
+						<Input type="time" name="eventTime" id="event-time" text="Event Title" value={formData.eventTime} onChange={handleChange} />
 					</div>
 				</div>
 

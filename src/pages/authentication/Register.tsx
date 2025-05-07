@@ -22,7 +22,7 @@ export default function Register() {
 						value={formData.name}
 						onChange={(e) => setFormData({ ...formData, name: e.target.value })}
 					/>
-					{errors.name && <span className="text-[12px] tracking-wider text-red-400">{errors.name}</span>}
+					{errors.name && <span className="text-[11px] tracking-wider text-red-400">{errors.name}</span>}
 				</div>
 				<div className="flex flex-col gap-y-2">
 					<Input
@@ -33,9 +33,9 @@ export default function Register() {
 						value={formData.email}
 						onChange={(e) => setFormData({ ...formData, email: e.target.value })}
 					/>
-					{errors.email && <span className="text-[12px] tracking-wider text-red-400">{errors.email}</span>}
+					{errors.email && <span className="text-[11px] tracking-wider text-red-400">{errors.email}</span>}
 				</div>
-				<div className="flex flex-col gap-y-2">
+				<div className="flex flex-col gap-y-3">
 					<Input
 						type="password"
 						name="password"
@@ -45,7 +45,7 @@ export default function Register() {
 						onChange={(e) => setFormData({ ...formData, password: e.target.value })}
 					/>
 					{errors.password && <span className="text-[12px] tracking-wider text-red-400">{errors.password}</span>}
-					<span className="text-slate-400 text-[14px]">
+					<span className="text-slate-400 text-[13px]">
 						Have an account?{" "}
 						<Link to="/log-in" className="font-medium text-sky-300">
 							Log in now

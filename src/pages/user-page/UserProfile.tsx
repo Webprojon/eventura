@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import { smoothOpacity } from "../../lib/page-animations";
 
-export default function UserPprofile() {
+export default function UserProfile() {
 	const { text } = useParams();
 	//const user = EVENT_DETAILS.map((event) =>
 	//	event.participants.find((participant) => participant.participantName === text),

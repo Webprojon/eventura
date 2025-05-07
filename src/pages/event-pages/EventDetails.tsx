@@ -3,7 +3,6 @@ import { TfiLocationPin } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { SlInfo } from "react-icons/sl";
-import { useState } from "react";
 import EventParticipants from "../../components/event-components/EventParticipants";
 import { smoothOpacity } from "../../lib/page-animations";
 import { DEFAULT_BG_IMG } from "../../lib/data";
@@ -11,8 +10,8 @@ import { useGetEvents } from "../../hooks/useGetEvents";
 import { EventDetailsSkeleton } from "../../components/skeletons/EventDetailsSkeleton";
 
 export default function EventDetails() {
-	const [userIsLoggedIn] = useState(false);
 	const { event, isLoading, formatDate } = useGetEvents();
+	const token = localStorage.getItem("token");
 
 	if (isLoading) return <EventDetailsSkeleton />;
 	if (!event) return;
@@ -59,7 +58,7 @@ export default function EventDetails() {
 						{event.eventCity} {event.eventAvenue}
 					</div>
 
-					<button className="btn py-2 px-4">{userIsLoggedIn ? "Join This Event" : "Sign in to join this event"}</button>
+					<button className="btn py-2 px-4">{token ? "Join This Event" : "Sign in to join this event"}</button>
 				</div>
 			</div>
 

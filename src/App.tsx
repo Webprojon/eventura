@@ -8,8 +8,8 @@ import Register from "./pages/authentication/Register";
 import CreateEvent from "./pages/event-pages/CreateEvent";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import StarterPage from "./pages/home-page/Starter";
-import UserPprofile from "./pages/user-page/UserProfile";
 import UpdateEvent from "./pages/event-pages/UpdateEvent";
+import UserProfile from "./pages/user-page/UserProfile";
 
 function App() {
 	const pathname = useLocation().pathname;
@@ -24,9 +24,9 @@ function App() {
 					<Route path="/register" element={<Register />} />
 					<Route path="/events" element={<EventsPage />} />
 					<Route path="/events/:id" element={<EventDetails />} />
-					<Route path="//events/create-event" element={<CreateEvent />} />
-					<Route path="//events/update/:id" element={<UpdateEvent />} />
-					<Route path="/profile/:text" element={<UserPprofile />} />
+					<Route path="/events/create-event" element={<CreateEvent />} />
+					<Route path="/events/update/:id" element={<UpdateEvent />} />
+					<Route path="/profile/:id" element={<UserProfile />} />
 				</Routes>
 				<Toaster position="bottom-right" />
 				<div className="bg-blur-effect top-[-33rem]"></div>

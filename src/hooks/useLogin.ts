@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthUserType } from "../lib/types";
@@ -6,7 +6,6 @@ import { BASE_URL } from "../lib/data";
 import { LoginFormType, LoginSchema } from "../lib/validation/login.schema";
 
 export function useLogin() {
-	const queryClient = useQueryClient();
 	const navigate = useNavigate();
 
 	const signIn = async (userData: AuthUserType) => {
@@ -17,7 +16,8 @@ export function useLogin() {
 		});
 
 		if (!res.ok) {
-			return new Error("Failed to log in");
+			const errorData = await res.json();
+			throw new Error(errorData.message || "Failed to log in");
 		}
 
 		return res.json();
@@ -25,13 +25,18 @@ export function useLogin() {
 
 	const { mutate, isPending } = useMutation({
 		mutationFn: signIn,
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["signin"] });
+		onSuccess: (data) => {
 			toast.success("User logged in!");
+
+			const token = data?.data?.token || data?.token;
+			if (token) {
+				localStorage.setItem("token", token);
+			}
+
 			navigate("/events");
 		},
-		onError: (error) => {
-			toast.error("Something went wrong. Please try again. " + error);
+		onError: (error: Error) => {
+			toast.error(error.message || "Something went wrong.");
 		},
 	});
 

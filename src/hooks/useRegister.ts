@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthUserType } from "../lib/types";
@@ -6,7 +6,6 @@ import { BASE_URL } from "../lib/data";
 import { RegisterFormType, RegisterSchema } from "../lib/validation/register.schema";
 
 export function useRegister() {
-	const queryClient = useQueryClient();
 	const navigate = useNavigate();
 
 	// API Call
@@ -30,13 +29,17 @@ export function useRegister() {
 	const { mutate, isPending } = useMutation({
 		mutationFn: signUp,
 		onSuccess: (data) => {
-			queryClient.invalidateQueries({ queryKey: ["signup"] });
 			toast.success("User created successfully!");
-			localStorage.setItem("token", data.data.token);
+
+			const token = data?.data?.token || data?.token;
+			if (token) {
+				localStorage.setItem("token", token);
+			}
+
 			navigate("/events");
 		},
 		onError: (error: Error) => {
-			toast.error("Something went wrong. Please try again. " + error.message);
+			toast.error(error.message || "Something went wrong. Please try again.");
 		},
 	});
 

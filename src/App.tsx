@@ -26,7 +26,7 @@ function App() {
 					<Route path="/events/:id" element={<EventDetails />} />
 					<Route path="/events/create-event" element={<CreateEvent />} />
 					<Route path="/events/update/:id" element={<UpdateEvent />} />
-					<Route path="/profile/:id" element={<UserProfile />} />
+					<Route path="/user-profile" element={<UserProfile />} />
 				</Routes>
 				<Toaster position="bottom-right" />
 				<div className="bg-blur-effect top-[-33rem]"></div>

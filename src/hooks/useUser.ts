@@ -4,7 +4,7 @@ import { BASE_URL } from "../lib/data";
 export function useUser() {
 	const token = localStorage.getItem("token");
 	const getUser = async () => {
-		const res = await fetch(`${BASE_URL}/users`, {
+		const res = await fetch(`${BASE_URL}/users/me`, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -19,8 +19,11 @@ export function useUser() {
 		enabled: !!token,
 	});
 
+	const user = data?.data;
+
 	return {
-		data,
+		user,
+		token,
 		isLoading,
 	};
 }

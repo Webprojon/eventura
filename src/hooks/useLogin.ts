@@ -35,8 +35,8 @@ export function useLogin() {
 
 			navigate("/events");
 		},
-		onError: (error: Error) => {
-			toast.error(error.message || "Something went wrong.");
+		onError: () => {
+			toast.error("Incorrect email or password, try again");
 		},
 	});
 

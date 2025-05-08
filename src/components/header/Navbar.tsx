@@ -14,24 +14,28 @@ export default function Navbar() {
 					<FaPeopleGroup className="size-7 text-sky-300" />
 					<h1 className="leading-none font-semibold">Eventura</h1>
 				</Link>
-				<Link to="/events" className="font-semibold text-sky-300">
+				<Link to="/events" className={`font-semibold ${pathname === "/events" && "text-sky-300"}`}>
 					Events
 				</Link>
 			</div>
 			<nav className="font-semibold flex items-center gap-x-6 text-sky-300">
-				<Link to="/events/create-event" className={`py-[4px] px-5 btn ${pathname === "/events/create" ? "hidden" : ""}`}>
+				<Link to={`${token ? "/events/create-event" : "/login"}`} className={`py-[4px] px-5 btn ${pathname === "/events/create-event" && "hidden"}`}>
 					Create New Event
 				</Link>
-				{!token && (
-					<Link to="/log-in" className="py-[4px] px-5 btn">
-						Sign In
-					</Link>
-				)}
-				{isLoading ? (
-					<div className="animate-spin w-9 h-9 rounded-full border-2 border-r border-b"></div>
+				{token ? (
+					<>
+						{isLoading ? (
+							<div className="animate-spin w-9 h-9 rounded-full border-2 border-r border-b"></div>
+						) : (
+							<Link to="/user-profile" className="rounded-full bg-[#1C2029]">
+								<img src={NO_AVATAR} alt="user img" className="w-9 h-9 rounded-full border object-cover" />
+							</Link>
+						)}
+					</>
 				) : (
-					<Link to="/user-profile">
-						<img src={NO_AVATAR} alt="user img" className="w-9 h-9 rounded-full border object-cover" />
+					<Link to="/login" className="py-[4px] px-5 btn relative flex justify-center items-center">
+						<span className="absolute h-[76%] w-[64%] animate-ping rounded-md opacity-75 bg-sky-400"></span>
+						Sign In
 					</Link>
 				)}
 			</nav>

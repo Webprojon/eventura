@@ -41,8 +41,8 @@ export default function Login() {
 						</Link>
 					</span>
 				</div>
-				<button type="submit" className="py-2 px-4 btn">
-					{isPending ? "Logging" : "Log in"}
+				<button type="submit" className="flex justify-center items-center py-2 px-4 btn">
+					{isPending ? <div className="animate-spin w-6 h-6 rounded-full border-1 border-r-0 border-sky-300"></div> : "Log in"}
 				</button>
 			</form>
 		</AuthLayout>

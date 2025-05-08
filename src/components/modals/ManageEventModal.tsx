@@ -7,11 +7,13 @@ import { useState } from "react";
 import { modalAnim } from "../../lib/page-animations";
 import ConfirmationModal from "./ConfirmationModal";
 import { useDeleteEvent } from "../../hooks/useDeleteEvent";
+import { useUser } from "../../hooks/useUser";
 
 export default function ManageEvent({ id }: { id: string }) {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { handleDelete } = useDeleteEvent();
+	const { token } = useUser();
 
 	const handleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -27,17 +29,11 @@ export default function ManageEvent({ id }: { id: string }) {
 			<div className="flex gap-3">
 				{isMenuOpen && (
 					<motion.div initial="initial" animate="animate" variants={modalAnim} className="flex flex-col gap-y-2">
-						<Link
-							to={`/events/update/${id}`}
-							className="flex items-center gap-2 text-[13px] font-semibold text-sky-300"
-						>
+						<Link to={`${token ? `/events/update/${id}` : "/login"}`} className="flex items-center gap-2 text-[13px] font-semibold text-sky-300">
 							<MdOutlineEdit className="size-4" />
 							Update event
 						</Link>
-						<button
-							onClick={handleModal}
-							className="flex items-center gap-2 cursor-pointer text-[13px] font-semibold text-red-400"
-						>
+						<button onClick={handleModal} className="flex items-center gap-2 cursor-pointer text-[13px] font-semibold text-red-400">
 							<RiDeleteBin6Line className="size-4" />
 							Delete event
 						</button>
@@ -53,13 +49,7 @@ export default function ManageEvent({ id }: { id: string }) {
 			</div>
 
 			{/* Confirmation Modal */}
-			{isModalOpen && (
-				<ConfirmationModal
-					message="Confirm deletion of this event?"
-					onCancel={handleModal}
-					onConfirm={() => handleDelete(id)}
-				/>
-			)}
+			{isModalOpen && <ConfirmationModal message="Confirm deletion of this event?" onCancel={handleModal} onConfirm={() => handleDelete(id)} />}
 		</>
 	);
 }

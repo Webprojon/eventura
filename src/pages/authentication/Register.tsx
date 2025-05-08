@@ -47,13 +47,13 @@ export default function Register() {
 					{errors.password && <span className="text-[12px] tracking-wider text-red-400">{errors.password}</span>}
 					<span className="text-slate-400 text-[13px]">
 						Have an account?{" "}
-						<Link to="/log-in" className="font-medium text-sky-300">
+						<Link to="/login" className="font-medium text-sky-300">
 							Log in now
 						</Link>
 					</span>
 				</div>
 				<button type="submit" className="py-2 px-4 btn" disabled={isPending}>
-					{isPending ? "Registering..." : "Register"}
+					{isPending ? <div className="animate-spin w-6 h-6 rounded-full border-1 border-r-0 border-sky-300"></div> : "Register"}
 				</button>
 			</form>
 		</AuthLayout>

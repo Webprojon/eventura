@@ -4,7 +4,7 @@ export const EventDetailsSkeleton = () => {
 	const highlightcolor = "#2A2F3A";
 	const basecolor = "#1C2029";
 	return (
-		<section className="flex items-start gap-5 mt-9 max-w-[1350px] min-h-[100vh] mx-auto pb-10">
+		<section className="flex flex-col md:flex-row items-start gap-5 mt-5 sm:mt-9 max-w-[1350px] min-h-[100vh] mx-auto pb-10 px-2 xl:px-0">
 			{/* Main content */}
 			<div className="relative flex-[2.5] rounded-md p-5 border bg-[#10141E] w-full">
 				{/* Image skeleton */}
@@ -27,9 +27,9 @@ export const EventDetailsSkeleton = () => {
 			</div>
 
 			{/* Participants */}
-			<div className="w-[300px] p-4 border rounded-md bg-[#10141E] flex flex-col gap-4">
+			<div className="w-full sm:w-[300px] p-4 border rounded-md bg-[#10141E] flex flex-col gap-4">
 				<Skeleton height={22} width="80%" baseColor={basecolor} highlightColor={highlightcolor} />
-				{[...Array(4)].map((_, idx) => (
+				{[...Array(3)].map((_, idx) => (
 					<div key={idx} className="flex items-center gap-3">
 						<Skeleton circle width={40} height={40} baseColor={basecolor} highlightColor={highlightcolor} />
 						<Skeleton width="60%" height={15} baseColor={basecolor} highlightColor={highlightcolor} />

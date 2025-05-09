@@ -21,7 +21,7 @@ export default function EventDetails() {
 			initial="initial"
 			animate="animate"
 			variants={smoothOpacity}
-			className="flex flex-col md:flex-row items-center sm:items-start justify-center gap-5 max-w-[1350px]  mx-auto mt-5 sm:mt-9 pb-10 px-2 xl:px-0"
+			className="flex flex-col md:flex-row items-center sm:items-start justify-center gap-5 max-w-[1350px] mx-auto mt-5 sm:mt-9 pb-10 px-2 xl:px-0"
 		>
 			<div className="flex-3 rounded-md p-2 sm:p-5 border bg-[#10141E]">
 				<div className="relative overflow-hidden border rounded-md">

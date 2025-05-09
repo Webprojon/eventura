@@ -4,6 +4,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 export function EventListsSkeleton({ count = 3 }) {
 	const highlightcolor = "#2A2F3A";
 	const basecolor = "#1C2029";
+
 	return (
 		<>
 			{Array(count)
@@ -18,7 +19,7 @@ export function EventListsSkeleton({ count = 3 }) {
 							</div>
 						</div>
 
-						<div className="flex justify-between items-center py-5">
+						<div className="justify-between items-center py-5">
 							<Skeleton width="30%" height={15} baseColor={basecolor} highlightColor={highlightcolor} />
 							<Skeleton width="30%" height={15} baseColor={basecolor} highlightColor={highlightcolor} />
 						</div>

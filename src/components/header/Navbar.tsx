@@ -12,14 +12,14 @@ export default function Navbar() {
 		<header className="max-w-[1350px] mx-auto flex items-center justify-between h-[9vh] border-b px-2 xl:px-0">
 			<div className="flex items-center gap-x-4 text-lg">
 				<Link to="/" className="flex items-center leading-none gap-3">
-					<FaPeopleGroup className="size-7 text-sky-300" />
-					<h1 className="leading-none font-semibold">Eventura</h1>
+					<FaPeopleGroup className="size-8 text-sky-300" />
+					<h1 className="leading-none font-semibold hidden sm:block">Eventura</h1>
 				</Link>
 				<Link to="/events" className={`font-semibold ${pathname === "/events" && "text-sky-300"}`}>
 					Events
 				</Link>
 			</div>
-			<nav className="font-semibold flex items-center gap-x-4 text-sky-300">
+			<nav className="font-semibold flex items-center gap-x-5 text-sky-300">
 				<Link
 					to={`${token ? "/events/create-event" : "/login"}`}
 					className={`hidden sm:block py-[4px] px-5 btn ${pathname === "/events/create-event" && "hidden"}`}
@@ -41,7 +41,7 @@ export default function Navbar() {
 					</>
 				) : (
 					<Link to="/login" className="py-[7px] sm:py-[4px] px-5 btn relative flex justify-center items-center">
-						<span className="relative -top-4 -right-20 flex size-3">
+						<span className="relative -top-4 -left-6 flex size-3">
 							<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-300 opacity-85"></span>
 							<span className="relative inline-flex size-3 rounded-full bg-sky-400"></span>
 						</span>

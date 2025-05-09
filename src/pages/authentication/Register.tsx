@@ -52,7 +52,7 @@ export default function Register() {
 						</Link>
 					</span>
 				</div>
-				<button type="submit" className="py-3 sm:py-2 px-4 btn" disabled={isPending}>
+				<button type="submit" className="flex justify-center items-center py-3 sm:py-2 px-4 btn" disabled={isPending}>
 					{isPending ? <div className="animate-spin w-6 h-6 rounded-full border-1 border-r-0 border-sky-300"></div> : "Register"}
 				</button>
 			</form>

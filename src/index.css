@@ -24,6 +24,10 @@ html::-webkit-scrollbar-thumb {
 	border-radius: 1px;
 }
 
+.placeholder-color::placeholder {
+	@apply text-slate-300;
+}
+
 /* BUTTON */
 
 .btn {
@@ -53,10 +57,6 @@ html::-webkit-scrollbar-thumb {
 
 .border-l {
 	@apply border-l;
-}
-
-.bg-blur-effect {
-	@apply fixed z-10 left-1/2 -translate-x-1/2 h-[30rem] w-[40rem] rounded-full blur-[10rem] bg-[#2a3f83];
 }
 
 /* CALENDAR */

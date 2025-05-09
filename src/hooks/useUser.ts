@@ -10,6 +10,7 @@ export function useUser() {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
+			credentials: "include",
 		});
 		if (!res.ok) throw new Error("Error fetching users");
 		return res.json();

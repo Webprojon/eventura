@@ -5,7 +5,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { NO_AVATAR } from "../../lib/data";
 import { useGetEvents } from "../../hooks/useGetEvents";
 import { EventListsSkeleton } from "../skeletons/EventListsSkeleton";
-import ManageEvent from "../modals/ManageEventModal";
+import ManageEvent, { ManageEventMobile } from "../modals/ManageEventModal";
 import { useUser } from "../../hooks/useUser";
 
 export default function EventLists() {
@@ -38,7 +38,6 @@ export default function EventLists() {
 						</div>
 						<ManageEvent id={detail._id} />
 					</div>
-
 					<div className="flex justify-between items-center gap-y-3 flex-wrap py-6">
 						<span className="flex gap-x-2 items-center">
 							<MdOutlineDateRange className="size-5" />
@@ -62,6 +61,8 @@ export default function EventLists() {
 							Learn More
 						</Link>
 					</div>
+
+					<ManageEventMobile id={detail._id} />
 				</div>
 			))}
 		</section>

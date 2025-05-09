@@ -22,7 +22,7 @@ export default function Navbar() {
 			<nav className="font-semibold flex items-center gap-x-5 text-sky-300">
 				<Link
 					to={`${token ? "/events/create-event" : "/login"}`}
-					className={`hidden sm:block py-[4px] px-5 btn ${pathname === "/events/create-event" && "hidden"}`}
+					className={`hidden py-[4px] px-5 btn ${pathname === "/events/create-event" ? "hidden" : "sm:block"}`}
 				>
 					Create New Event
 				</Link>

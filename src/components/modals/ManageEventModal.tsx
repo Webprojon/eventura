@@ -8,19 +8,17 @@ import { modalAnim } from "../../lib/page-animations";
 import ConfirmationModal from "./ConfirmationModal";
 import { useDeleteEvent } from "../../hooks/useDeleteEvent";
 import { useUser } from "../../hooks/useUser";
+import useModalStore from "../../store/modal";
 
 export default function ManageEvent({ id }: { id: string }) {
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const isMenuOpen = useModalStore((state) => state.isMenuOpen);
+	const handleMenu = useModalStore((state) => state.handleMenu);
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { handleDelete } = useDeleteEvent();
 	const { token } = useUser();
 
-	const handleMenu = () => {
-		setIsMenuOpen(!isMenuOpen);
-	};
-
 	const handleModal = () => {
-		setIsMenuOpen(false);
 		setIsModalOpen(!isModalOpen);
 	};
 
@@ -28,7 +26,7 @@ export default function ManageEvent({ id }: { id: string }) {
 		<>
 			<div className="flex gap-3">
 				{isMenuOpen && (
-					<motion.div initial="initial" animate="animate" variants={modalAnim} className="flex flex-col gap-y-2">
+					<motion.div initial="initial" animate="animate" variants={modalAnim} className="hidden sm:flex flex-col gap-y-2">
 						<Link to={`${token ? `/events/update/${id}` : "/login"}`} className="flex items-center gap-2 text-[13px] font-semibold text-sky-300">
 							<MdOutlineEdit className="size-4" />
 							Update event
@@ -48,6 +46,40 @@ export default function ManageEvent({ id }: { id: string }) {
 				</div>
 			</div>
 
+			{/* Confirmation Modal */}
+			{isModalOpen && <ConfirmationModal message="Confirm deletion of this event?" onCancel={handleModal} onConfirm={() => handleDelete(id)} />}
+		</>
+	);
+}
+
+export function ManageEventMobile({ id }: { id: string }) {
+	const isMenuOpen = useModalStore((state) => state.isMenuOpen);
+
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const { handleDelete } = useDeleteEvent();
+	const { token } = useUser();
+
+	const handleModal = () => {
+		//setIsMenuOpen(false);
+		setIsModalOpen(!isModalOpen);
+	};
+
+	return (
+		<>
+			<div>
+				{isMenuOpen && (
+					<motion.div initial="initial" animate="animate" variants={modalAnim} className="flex sm:hidden justify-between mt-4">
+						<Link to={`${token ? `/events/update/${id}` : "/login"}`} className="flex items-center gap-2 font-semibold text-sky-300">
+							<MdOutlineEdit className="size-5" />
+							Update event
+						</Link>
+						<button onClick={handleModal} className="flex items-center gap-2 cursor-pointer font-semibold text-red-400">
+							<RiDeleteBin6Line className="size-5" />
+							Delete event
+						</button>
+					</motion.div>
+				)}
+			</div>
 			{/* Confirmation Modal */}
 			{isModalOpen && <ConfirmationModal message="Confirm deletion of this event?" onCancel={handleModal} onConfirm={() => handleDelete(id)} />}
 		</>

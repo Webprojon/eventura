@@ -58,22 +58,21 @@ export default function CreateEvent() {
 						Description
 					</label>
 					<textarea
-						required
 						id="description"
 						autoComplete="off"
 						name="eventDescription"
 						onChange={handleChange}
 						value={formData.eventDescription}
 						placeholder="Write a brief description..."
-						className="w-full mt-3 mb-5 bg-transparent py-2 px-3 min-h-[14vh] small-scroll rounded-md outline-none border text-slate-300 placeholder:text-slate-300"
+						className="w-full mt-3 mb-5 bg-transparent py-2 px-3 min-h-[14vh] small-scroll rounded-md outline-none border text-slate-300 placeholder-color"
 					></textarea>
 				</div>
 
 				<div className="flex justify-end gap-x-6">
-					<Link to="/events" className="py-3 sm:py-2 px-7 rounded-md font-semibold border-1 border-sky-300 text-sky-300">
+					<Link to="/events" className="py-[9px] sm:py-2 px-7 rounded-md font-semibold border-1 border-sky-300 text-sky-300">
 						Cancel
 					</Link>
-					<button type="submit" className="py-3 sm:py-2 px-7 btn" disabled={isPending}>
+					<button type="submit" className="py-[9px] sm:py-2 px-7 btn" disabled={isPending}>
 						{isPending ? "Creating..." : "Create New Event"}
 					</button>
 				</div>

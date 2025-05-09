@@ -35,7 +35,7 @@ export default function Register() {
 					/>
 					{errors.email && <span className="text-[11px] tracking-wider text-red-400">{errors.email}</span>}
 				</div>
-				<div className="flex flex-col gap-y-3">
+				<div className="flex flex-col gap-y-2">
 					<Input
 						type="password"
 						name="password"
@@ -45,14 +45,14 @@ export default function Register() {
 						onChange={(e) => setFormData({ ...formData, password: e.target.value })}
 					/>
 					{errors.password && <span className="text-[12px] tracking-wider text-red-400">{errors.password}</span>}
-					<span className="text-slate-400 text-[13px]">
+					<span className="text-slate-400 text-[13px] mt-2">
 						Have an account?{" "}
 						<Link to="/login" className="font-medium text-sky-300">
 							Log in now
 						</Link>
 					</span>
 				</div>
-				<button type="submit" className="py-2 px-4 btn" disabled={isPending}>
+				<button type="submit" className="py-3 sm:py-2 px-4 btn" disabled={isPending}>
 					{isPending ? <div className="animate-spin w-6 h-6 rounded-full border-1 border-r-0 border-sky-300"></div> : "Register"}
 				</button>
 			</form>

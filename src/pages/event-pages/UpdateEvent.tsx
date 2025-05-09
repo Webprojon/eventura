@@ -15,28 +15,20 @@ export default function UpdateEvent() {
 			initial="initial"
 			animate="animate"
 			variants={smoothOpacity}
-			className="max-w-[1350px] mx-auto rounded-md px-4 py-5 mt-9 border select-none bg-[#10141E]"
+			className="max-w-[1350px] md:mx-2 px-4 xl:mx-auto md:rounded-md py-5 md:mt-9 border select-none bg-[#10141E]"
 		>
 			<form onSubmit={handleSubmit}>
 				<>
 					<h2 className="uppercase text-sm leading-none font-semibold text-sky-300">Event Details</h2>
 					<div className="flex flex-wrap justify-between gap-6 mt-4">
-						<Input
-							type="text"
-							name="eventTitle"
-							id="event-title"
-							text="Event Title"
-							className="flex-[2]"
-							value={formData.eventTitle}
-							onChange={handleChange}
-						/>
+						<Input type="text" name="eventTitle" id="event-title" text="Event Title" className="flex-[2]" value={formData.eventTitle} onChange={handleChange} />
 						<select
 							required
 							id="event-category"
 							name="eventCategory"
 							value={formData.eventCategory}
 							onChange={handleChange}
-							className="flex-[2] border outline-none cursor-pointer rounded-md py-2 px-3 text-slate-300 bg-[#10141E]"
+							className="flex-[2] border outline-none cursor-pointer rounded-md py-3 sm:py-2 px-3 text-slate-300 bg-[#10141E]"
 						>
 							<option value="" disabled>
 								Select Category
@@ -51,46 +43,16 @@ export default function UpdateEvent() {
 				<div className="mt-10">
 					<h2 className="uppercase text-sm leading-none font-semibold text-sky-300">Event Location Details</h2>
 					<div className="flex flex-wrap gap-6 mt-4">
-						<Input
-							type="text"
-							name="eventCity"
-							id="city"
-							text="City"
-							className="flex-[2]"
-							value={formData.eventCity}
-							onChange={handleChange}
-						/>
-						<Input
-							type="text"
-							name="eventAvenue"
-							id="avenue"
-							text="Avenue"
-							className="flex-[2]"
-							value={formData.eventAvenue}
-							onChange={handleChange}
-						/>
+						<Input type="text" name="eventCity" id="city" text="City" className="flex-[2]" value={formData.eventCity} onChange={handleChange} />
+						<Input type="text" name="eventAvenue" id="avenue" text="Avenue" className="flex-[2]" value={formData.eventAvenue} onChange={handleChange} />
 					</div>
 				</div>
 
 				<div className="mt-10">
 					<h2 className="uppercase text-sm leading-none font-semibold text-sky-300">Event Date & Time</h2>
 					<div className="flex flex-wrap gap-6 mt-4">
-						<Input
-							type="date"
-							name="eventDate"
-							id="date"
-							text="Date"
-							value={formData.eventDate}
-							onChange={handleChange}
-						/>
-						<Input
-							type="time"
-							name="eventTime"
-							id="event-time"
-							text="Event Title"
-							value={formData.eventTime}
-							onChange={handleChange}
-						/>
+						<Input type="date" name="eventDate" id="date" text="Date" value={formData.eventDate} onChange={handleChange} />
+						<Input type="time" name="eventTime" id="event-time" text="Event Title" value={formData.eventTime} onChange={handleChange} />
 					</div>
 				</div>
 
@@ -111,10 +73,10 @@ export default function UpdateEvent() {
 				</div>
 
 				<div className="flex justify-end gap-x-6">
-					<Link to="/events" className="py-2 px-7 rounded-md font-semibold border-1 border-sky-300 text-sky-300">
+					<Link to="/events" className="py-3 sm:py-2 px-7 rounded-md font-semibold border-1 border-sky-300 text-sky-300">
 						Cancel
 					</Link>
-					<button type="submit" className="py-2 px-7 btn" disabled={isPending}>
+					<button type="submit" className="py-3 sm:py-2 px-7 btn" disabled={isPending}>
 						{isPending ? "Updating..." : "Update Event"}
 					</button>
 				</div>

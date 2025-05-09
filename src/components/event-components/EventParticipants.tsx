@@ -6,7 +6,7 @@ type EventParticipantsProps = {
 
 export default function EventParticipants({ participants }: EventParticipantsProps) {
 	return (
-		<div className="flex-1 rounded-md border select-none bg-[#10141E]">
+		<div className="w-full flex-1 rounded-md border select-none bg-[#10141E]">
 			{/*border-b*/}
 			<div className="px-3 py-2">
 				<span className="font-semibold text-[18px]">Participants {participants.length}</span>

@@ -18,9 +18,13 @@ export default function EventLists() {
 			{data?.data.map((detail) => (
 				<div key={detail._id} className="rounded-md p-3 border bg-[#10141E]">
 					<div className="flex justify-between items-start border-b">
-						<div className="flex gap-6 pb-2">
+						<div className="flex gap-x-4 pb-2">
 							<Link to="/user-profile" className="rounded-full bg-[#1C2029]">
-								<img alt="User img" className="w-[60px] h-[60px] rounded-full object-cover border bg-[#1C2029" src={detail.organiserImg || NO_AVATAR} />
+								<img
+									alt="User img"
+									className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] rounded-full object-cover border bg-[#1C2029"
+									src={detail.organiserImg || NO_AVATAR}
+								/>
 							</Link>
 							<div className="flex flex-col">
 								<span className="font-medium text-[20px]">{detail.eventTitle}</span>
@@ -35,7 +39,7 @@ export default function EventLists() {
 						<ManageEvent id={detail._id} />
 					</div>
 
-					<div className="flex justify-between items-center py-6">
+					<div className="flex justify-between items-center gap-y-3 flex-wrap py-6">
 						<span className="flex gap-x-2 items-center">
 							<MdOutlineDateRange className="size-5" />
 							{formatDate(detail.eventDate)}, at {detail.eventTime}
@@ -54,7 +58,7 @@ export default function EventLists() {
 							</div>
 						)}
 						<p>{detail.eventDescription}</p>
-						<Link to={`/events/${detail._id}`} className="flex justify-end mt-2 font-medium text-sky-300">
+						<Link to={`/events/${detail._id}`} className="flex justify-end mt-3 font-medium text-sky-300">
 							Learn More
 						</Link>
 					</div>

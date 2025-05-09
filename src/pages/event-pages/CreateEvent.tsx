@@ -12,7 +12,7 @@ export default function CreateEvent() {
 			initial="initial"
 			animate="animate"
 			variants={smoothOpacity}
-			className="max-w-[1350px] mx-auto rounded-md px-4 py-5 mt-9 border select-none bg-[#10141E]"
+			className="max-w-[1350px] md:mx-2 px-4 xl:mx-auto md:rounded-md py-5 md:mt-9 border select-none bg-[#10141E]"
 		>
 			<form onSubmit={handleSubmit}>
 				<div>
@@ -25,7 +25,7 @@ export default function CreateEvent() {
 							name="eventCategory"
 							value={formData.eventCategory}
 							onChange={handleChange}
-							className="flex-[2] border outline-none cursor-pointer rounded-md py-2 px-3 text-slate-300 bg-[#10141E]"
+							className="flex-[2] border outline-none cursor-pointer rounded-md py-3 sm:py-2 px-3 text-slate-300 bg-[#10141E]"
 						>
 							<option value="" disabled>
 								Select Category
@@ -70,10 +70,10 @@ export default function CreateEvent() {
 				</div>
 
 				<div className="flex justify-end gap-x-6">
-					<Link to="/events" className="py-2 px-7 rounded-md font-semibold border-1 border-sky-300 text-sky-300">
+					<Link to="/events" className="py-3 sm:py-2 px-7 rounded-md font-semibold border-1 border-sky-300 text-sky-300">
 						Cancel
 					</Link>
-					<button type="submit" className="py-2 px-7 btn" disabled={isPending}>
+					<button type="submit" className="py-3 sm:py-2 px-7 btn" disabled={isPending}>
 						{isPending ? "Creating..." : "Create New Event"}
 					</button>
 				</div>

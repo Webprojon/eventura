@@ -10,7 +10,7 @@ export default function Input({ type, name, id, text, className, value, onChange
 			autoComplete="off"
 			placeholder={text}
 			onChange={onChange}
-			className={`bg-transparent py-2 px-3 rounded-md outline-none border text-slate-300 placeholder:text-slate-300 ${className}`}
+			className={`bg-transparent py-3 sm:py-2 px-3 rounded-md outline-none border text-slate-300 placeholder:text-slate-300 ${className}`}
 		/>
 	);
 }

@@ -9,7 +9,7 @@ export default function EventsPage() {
 			initial="initial"
 			animate="animate"
 			variants={smoothOpacity}
-			className="max-w-[1350px] mx-auto flex items-start gap-5 mt-9 min-h-[100vh] pb-10"
+			className="max-w-[1350px] mx-auto flex items-start gap-5 min-h-[100vh] mt-5 sm:mt-9 pb-10 px-2 xl:px-0"
 		>
 			<EventLists />
 			<EventCalendar />

@@ -11,12 +11,8 @@ export default function EventCalendar() {
 	return isLoading ? (
 		<EventCalendarSkeleton />
 	) : (
-		<Calendar
-			inline
-			showWeek
-			value={dateValue}
-			onChange={(e) => setDateValue(e.value as Date)}
-			className="flex-1 select-none border rounded-md"
-		/>
+		<div className="hidden sm:block">
+			<Calendar inline showWeek value={dateValue} onChange={(e) => setDateValue(e.value as Date)} className="flex-1 select-none border rounded-md" />
+		</div>
 	);
 }

@@ -26,14 +26,7 @@ export function EventListsSkeleton({ count = 3 }) {
 						<div className="p-3 rounded-sm border bg-[#1C2029]">
 							<div className="flex items-center gap-x-2 p-2 mb-4 border-b">
 								{[...Array(3)].map((_, i) => (
-									<Skeleton
-										key={i}
-										circle
-										width={36}
-										height={36}
-										baseColor={basecolor}
-										highlightColor={highlightcolor}
-									/>
+									<Skeleton key={i} circle width={36} height={36} baseColor={basecolor} highlightColor={highlightcolor} />
 								))}
 							</div>
 							<Skeleton height={10} className="mb-2" baseColor={basecolor} highlightColor={highlightcolor} />

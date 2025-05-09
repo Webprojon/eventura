@@ -45,8 +45,8 @@ function App() {
 					/>
 				</Routes>
 				<Toaster position="bottom-right" />
-				<div className="bg-blur-effect top-[-33rem]"></div>
-				<div className="bg-blur-effect bottom-[-34rem]"></div>
+				<div className="bg-blur-effect top-[-30rem] sm:top-[-33rem]"></div>
+				<div className="bg-blur-effect bottom-[-30rem] sm:bottom-[-34rem]"></div>
 			</main>
 		</QueryClientProvider>
 	);

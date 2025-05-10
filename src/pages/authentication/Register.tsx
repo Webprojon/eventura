@@ -4,6 +4,7 @@ import Input from "../../components/input-components/Input";
 import { useRegister } from "../../hooks/useRegister";
 import { useState } from "react";
 import { RegisterFormType } from "../../lib/validation/register.schema";
+import Loader from "../../components/Loader";
 
 export default function Register() {
 	const [formData, setFormData] = useState<RegisterFormType>({ name: "", email: "", password: "" });
@@ -53,7 +54,7 @@ export default function Register() {
 					</span>
 				</div>
 				<button type="submit" className="flex justify-center items-center py-3 sm:py-2 px-4 btn" disabled={isPending}>
-					{isPending ? <div className="animate-spin w-6 h-6 rounded-full border-1 border-r-0 border-sky-300"></div> : "Register"}
+					{isPending ? <Loader /> : "Register"}
 				</button>
 			</form>
 		</AuthLayout>

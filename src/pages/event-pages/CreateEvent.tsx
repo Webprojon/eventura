@@ -25,7 +25,7 @@ export default function CreateEvent() {
 							name="eventCategory"
 							value={formData.eventCategory}
 							onChange={handleChange}
-							className="flex-[2] border outline-none cursor-pointer rounded-md py-3 sm:py-2 px-3 text-slate-300 bg-[#10141E]"
+							className="flex-[2] border outline-none cursor-pointer rounded-md py-3 sm:py-2 px-3 text-[15px] text-slate-400 bg-[#10141E]"
 						>
 							<option value="" disabled>
 								Select Category
@@ -64,7 +64,7 @@ export default function CreateEvent() {
 						onChange={handleChange}
 						value={formData.eventDescription}
 						placeholder="Write a brief description..."
-						className="w-full mt-3 mb-5 bg-transparent py-2 px-3 min-h-[14vh] small-scroll rounded-md outline-none border text-slate-300 placeholder-color"
+						className="w-full mt-3 mb-5 bg-transparent py-2 px-3 text-[15px] min-h-[14vh] small-scroll rounded-md outline-none border text-slate-400 placeholder-color"
 					></textarea>
 				</div>
 

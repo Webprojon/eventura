@@ -5,7 +5,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { NO_AVATAR } from "../../lib/data";
 import { useGetEvents } from "../../hooks/useGetEvents";
 import { EventListsSkeleton } from "../skeletons/EventListsSkeleton";
-import ManageEvent, { ManageEventMobile } from "../modals/ManageEventModal";
+import { ManageEventBase } from "../modals/ManageEventModal";
 import { useUser } from "../../hooks/useUser";
 
 export default function EventLists() {
@@ -36,7 +36,7 @@ export default function EventLists() {
 								</span>
 							</div>
 						</div>
-						<ManageEvent id={detail._id} />
+						<ManageEventBase id={detail._id} />
 					</div>
 					<div className="flex justify-between items-center gap-y-3 flex-wrap py-6">
 						<span className="flex gap-x-2 items-center">
@@ -56,13 +56,15 @@ export default function EventLists() {
 								))}
 							</div>
 						)}
-						<p>{detail.eventDescription}</p>
+						<p className="line-clamp-2">
+							{detail.eventDescription.split(" ").length > 15 ? detail.eventDescription.split(" ").slice(0, 15).join(" ") + "..." : detail.eventDescription}
+						</p>
 						<Link to={`/events/${detail._id}`} className="flex justify-end mt-3 font-medium text-sky-300">
 							Learn More
 						</Link>
 					</div>
 
-					<ManageEventMobile id={detail._id} />
+					<ManageEventBase id={detail._id} isMobile />
 				</div>
 			))}
 		</section>

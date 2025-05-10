@@ -4,6 +4,7 @@ import Input from "../../components/input-components/Input";
 import { useLogin } from "../../hooks/useLogin";
 import { useState } from "react";
 import { LoginFormType } from "../../lib/validation/login.schema";
+import Loader from "../../components/Loader";
 
 export default function Login() {
 	const [formData, setFormData] = useState<LoginFormType>({ email: "", password: "" });
@@ -42,7 +43,7 @@ export default function Login() {
 					</span>
 				</div>
 				<button type="submit" className="flex justify-center items-center py-3 sm:py-2 px-4 btn">
-					{isPending ? <div className="animate-spin w-6 h-6 rounded-full border-1 border-r-0 border-sky-300"></div> : "Log in"}
+					{isPending ? <Loader /> : "Log in"}
 				</button>
 			</form>
 		</AuthLayout>

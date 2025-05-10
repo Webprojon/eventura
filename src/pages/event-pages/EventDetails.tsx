@@ -23,7 +23,7 @@ export default function EventDetails() {
 			variants={smoothOpacity}
 			className="flex flex-col md:flex-row items-center sm:items-start justify-center gap-5 max-w-[1350px] mx-auto mt-5 sm:mt-9 pb-10 px-2 xl:px-0"
 		>
-			<div className="flex-3 rounded-md sm:p-5 border w-full bg-[#10141E]">
+			<div className="flex-3 rounded-md sm:p-5 w-full bg-[#10141E]">
 				<div className="relative overflow-hidden border rounded-md">
 					<img src={DEFAULT_BG_IMG} alt="background img" className="w-full h-[30vh] sm:h-[44vh] object-cover" />
 					<div className="flex flex-col gap-y-1 absolute bottom-0 p-4 w-full h-[30vh] sm:h-[44vh] bg-black/75">
